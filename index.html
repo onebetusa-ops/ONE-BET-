@@ -1,154 +1,27 @@
-<div class="game-info">
-          <h3>Speed Race</h3>
-          <p>اختبر سرعتك وردة فعلك.</p>
-          <button class="play-btn">العب الآن</button>
-        </div>
-      </div>
+alert("تم تسجيل الدخول بنجاح");
 
-    </div>
-  </section>
+      document.getElementById("balance").textContent="1000.00";
 
-  <footer>
-    ONE BET © 2026 — Demo Platform
-  </footer>
+      closeLogin();
 
-
-  <!-- LOGIN MODAL -->
-
-  <div class="modal" id="loginModal">
-
-    <div class="modal-box">
-
-      <h2 id="formTitle">تسجيل الدخول</h2>
-
-      <input
-        id="username"
-        type="text"
-        placeholder="اسم المستخدم">
-
-      <input
-        id="password"
-        type="password"
-        placeholder="كلمة المرور">
-
-      <button class="submit" onclick="submitForm()">
-        دخول
-      </button>
-
-      <div
-        class="switch"
-        onclick="switchForm()"
-        id="switchText">
-        إنشاء حساب جديد
-      </div>
-
-      <button class="close" onclick="closeLogin()">
-        إغلاق
-      </button>
-
-    </div>
-  </div>
-
-
-  <script>
-
-    let registerMode = false;
-
-    function openLogin() {
-      document.getElementById("loginModal").style.display = "flex";
+    }else{
+      alert("اسم المستخدم أو كلمة المرور غير صحيحة");
     }
+  }
+}
 
-    function closeLogin() {
-      document.getElementById("loginModal").style.display = "none";
-    }
+function startGame(){
 
-    function switchForm() {
+  let user=localStorage.getItem("demoUser");
 
-      registerMode = !registerMode;
+  if(!user){
+    openLogin();
+    return;
+  }
 
-      document.getElementById("formTitle").textContent =
-        registerMode ? "إنشاء حساب" : "تسجيل الدخول";
-
-      document.querySelector(".submit").textContent =
-        registerMode ? "إنشاء الحساب" : "دخول";
-
-      document.getElementById("switchText").textContent =
-        registerMode ? "لدي حساب بالفعل" : "إنشاء حساب جديد";
-    }
-
-    function submitForm() {
-
-      const username =
-        document.getElementById("username").value.trim();
-
-      const password =
-        document.getElementById("password").value;
-
-      if (!username || !password) {
-        alert("يرجى إدخال اسم المستخدم وكلمة المرور");
-        return;
-      }
-
-      if (registerMode) {
-
-        localStorage.setItem("demoUser", username);
-        localStorage.setItem("demoPassword", password);
-
-        alert("تم إنشاء الحساب التجريبي بنجاح");
-
-        registerMode = false;
-
-        document.getElementById("formTitle").textContent =
-          "تسجيل الدخول";
-
-        document.querySelector(".submit").textContent =
-          "دخول";
-
-        document.getElementById("switchText").textContent =
-          "إنشاء حساب جديد";
-
-      } else {
-
-        const savedUser =
-          localStorage.getItem("demoUser");
-
-        const savedPassword =
-          localStorage.getItem("demoPassword");
-
-        if (
-          savedUser === username &&
-          savedPassword === password
-        ) {
-
-          alert("تم تسجيل الدخول بنجاح");
-
-          document.getElementById("balance").textContent =
-            "1000.00";
-
-          closeLogin();
-
-        } else {
-
-          alert("اسم المستخدم أو كلمة المرور غير صحيحة");
-
-        }
-      }
-    }
-
-    function gameLogin() {
-
-      const savedUser =
-        localStorage.getItem("demoUser");
-
-      if (!savedUser) {
-        openLogin();
-        return;
-      }
-
-      alert("اللعبة التجريبية ستفتح هنا في الخطوة القادمة.");
-    }
-
-  </script>
+  alert("اللعبة التجريبية ستفتح في الخطوة القادمة.");
+}
+</script>
 
 </body>
 </html>
