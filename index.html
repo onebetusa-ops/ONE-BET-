@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONE BET</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #11182d;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #26304d;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #00e5ff;
+    }
+
+    .login {
+      background: #00e5ff;
+      color: #07101c;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #00e5ff;
+    }
+
+    .hero p {
+      color: #aeb8d0;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .games {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .games h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .game {
+      background: #151d35;
+      border: 1px solid #293555;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .game .icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .game h3 {
+      margin-bottom: 10px;
+    }
+
+    .game p {
+      color: #9da8c2;
+      margin-bottom: 20px;
+    }
+
+    .play {
+      display: inline-block;
+      background: #00e5ff;
+      color: #07101c;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #71809f;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">ONE BET</div>
+    <a href="#" class="login">تسجيل الدخول</a>
+  </header>
+
+  <section class="hero">
+    <h1>مرحبًا بك في <span>ONE BET</span></h1>
+    <p>منصة ألعاب مصغرة بتصميم عصري وسهل الاستخدام</p>
+  </section>
+
+  <section class="games">
+    <h2>🎮 الألعاب</h2>
+
+    <div class="game-grid">
+
+      <div class="game">
+        <div class="icon">🐔</div>
+        <h3>Chicken</h3>
+        <p>لعبة Chicken التجريبية</p>
+        <a href="#" class="play">العب الآن</a>
+      </div>
+
+      <div class="game">
+        <div class="icon">🎲</div>
+        <h3>Dice</h3>
+        <p>لعبة النرد التجريبية</p>
+        <a href="#" class="play">العب الآن</a>
+      </div>
+
+      <div class="game">
+        <div class="icon">🎯</div>
+        <h3>Mini Game</h3>
+        <p>لعبة مصغرة جديدة</p>
+        <a href="#" class="play">العب الآن</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 ONE BET - جميع الحقوق محفوظة
+  </footer>
+
+</body>
+</html>
