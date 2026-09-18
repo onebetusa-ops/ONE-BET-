@@ -30,17 +30,17 @@
   }
 
   function switchForm() {
-    registerMode = !registerMode;
+  registerMode = !registerMode;
 
-    document.getElementById("formTitle").textContent =
-      registerMode ? "إنشاء حساب" : "تسجيل الدخول";
+  document.getElementById("formTitle").textContent =
+    registerMode ? "إنشاء حساب" : "تسجيل الدخول";
 
-    document.querySelector(".submit").textContent =
-      registerMode ? "إنشاء الحساب" : "دخول";
+  document.querySelector(".submit").textContent =
+    registerMode ? "إنشاء الحساب" : "دخول";
 
-    document.getElementById("switchText").textContent =
-      registerMode ? "لدي حساب بالفعل" : "إنشاء حساب جديد";
-  }
+  document.getElementById("switchText").textContent =
+    registerMode ? "لدي حساب بالفعل" : "إنشاء حساب جديد";
+}
 
   function submitForm() {
     const username = document.getElementById("username").value;
