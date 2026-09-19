@@ -1,5 +1,48 @@
-"Please enter your username and password."
-        );
+display = "none";
+    }
+
+
+    function switchForm() {
+
+      registerMode = !registerMode;
+
+      if (registerMode) {
+
+        document.getElementById("formTitle").textContent =
+          "Create Account";
+
+        document.querySelector(".submit-btn").textContent =
+          "Create Account";
+
+        document.getElementById("switchText").textContent =
+          "I already have an account";
+
+      } else {
+
+        document.getElementById("formTitle").textContent =
+          "Login";
+
+        document.querySelector(".submit-btn").textContent =
+          "Login";
+
+        document.getElementById("switchText").textContent =
+          "Create a new account";
+      }
+    }
+
+
+    function submitForm() {
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+
+      if (username === "" || password === "") {
+
+        alert("Please enter your username and password.");
 
         return;
       }
@@ -12,82 +55,55 @@
           username
         );
 
-
         alert(
           "Demo account created successfully."
         );
 
-
         registerMode = false;
 
+        document.getElementById("formTitle").textContent =
+          "Login";
 
-        document.getElementById(
-          "formTitle"
-        ).textContent = "Login";
+        document.querySelector(".submit-btn").textContent =
+          "Login";
 
-
-        document.querySelector(
-          ".submit-button"
-        ).textContent = "Login";
-
-
-        document.getElementById(
-          "switchText"
-        ).textContent =
+        document.getElementById("switchText").textContent =
           "Create a new account";
 
+        document.getElementById("username").value = "";
+
+        document.getElementById("password").value = "";
 
       } else {
 
         const savedUser =
-          localStorage.getItem(
-            "demoUser"
-          );
+          localStorage.getItem("demoUser");
 
 
         if (savedUser === username) {
 
-          alert(
-            "Login successful."
-          );
-
+          alert("Login successful.");
 
           closeLogin();
-
 
           document.getElementById(
             "balance"
           ).style.display = "block";
-
-
-          document
-            .querySelectorAll(".lock")
-            .forEach(function(lock) {
-
-              lock.textContent = "▶";
-
-            });
-
 
         } else {
 
           alert(
             "Username or password is incorrect."
           );
-
         }
-
       }
-
     }
 
 
     function startGame(gameName) {
 
       const user =
-        localStorage.getItem(
-          "demoUser"
-        );
+        localStorage.getItem("demoUser");
 
 
       if (!user) {
@@ -95,15 +111,13 @@
         openLogin();
 
         return;
-
       }
 
 
       alert(
         gameName +
-        " will be available in the next step."
+        " will be added in the next step."
       );
-
     }
 
   </script>
