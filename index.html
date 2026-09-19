@@ -1,177 +1,109 @@
-<p>اقلب البطاقات واكتشفها</p>
-        </div>
-      </div>
+"Please enter your username and password."
+        );
 
-      <div class="game" onclick="startGame('Basketball')">
-        <div class="lock">🔒</div>
-        <div class="game-art">🏀</div>
-        <div class="game-info">
-          <h3>Basketball</h3>
-          <p>اختبر دقة التصويب</p>
-        </div>
-      </div>
-
-      <div class="game" onclick="startGame('Race')">
-        <div class="lock">🔒</div>
-        <div class="game-art">🏎️</div>
-        <div class="game-info">
-          <h3>Speed Race</h3>
-          <p>سباق السرعة التجريبي</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    ONE BET © 2026 — نسخة تجريبية
-  </footer>
-
-
-  <!-- LOGIN MODAL -->
-  <div class="modal" id="loginModal">
-
-    <div class="modal-box">
-
-      <h2 id="formTitle">تسجيل الدخول</h2>
-
-      <input
-        id="username"
-        type="text"
-        placeholder="اسم المستخدم"
-      >
-
-      <input
-        id="password"
-        type="password"
-        placeholder="كلمة المرور"
-      >
-
-      <button
-        class="submit"
-        onclick="submitForm()"
-      >
-        دخول
-      </button>
-
-      <div
-        class="switch"
-        id="switchText"
-        onclick="switchForm()"
-      >
-        إنشاء حساب جديد
-      </div>
-
-      <button
-        class="close"
-        onclick="closeLogin()"
-      >
-        إغلاق
-      </button>
-
-    </div>
-  </div>
-
-
-  <script>
-
-    let registerMode = false;
-
-    function openLogin() {
-      document.getElementById("loginModal").style.display = "flex";
-    }
-
-    function closeLogin() {
-      document.getElementById("loginModal").style.display = "none";
-    }
-
-    function switchForm() {
-
-      registerMode = !registerMode;
-
-      document.getElementById("formTitle").textContent =
-        registerMode ? "إنشاء حساب" : "تسجيل الدخول";
-
-      document.querySelector(".submit").textContent =
-        registerMode ? "إنشاء الحساب" : "دخول";
-
-      document.getElementById("switchText").textContent =
-        registerMode ? "لدي حساب بالفعل" : "إنشاء حساب جديد";
-    }
-
-
-    function submitForm() {
-
-      const username =
-        document.getElementById("username").value.trim();
-
-      const password =
-        document.getElementById("password").value;
-
-      if (!username || !password) {
-        alert("يرجى إدخال اسم المستخدم وكلمة المرور");
         return;
       }
 
+
       if (registerMode) {
 
-        localStorage.setItem("demoUser", username);
+        localStorage.setItem(
+          "demoUser",
+          username
+        );
 
-        alert("تم إنشاء الحساب تجريبياً");
+
+        alert(
+          "Demo account created successfully."
+        );
+
 
         registerMode = false;
 
-        document.getElementById("formTitle").textContent =
-          "تسجيل الدخول";
 
-        document.querySelector(".submit").textContent =
-          "دخول";
+        document.getElementById(
+          "formTitle"
+        ).textContent = "Login";
 
-        document.getElementById("switchText").textContent =
-          "إنشاء حساب جديد";
+
+        document.querySelector(
+          ".submit-button"
+        ).textContent = "Login";
+
+
+        document.getElementById(
+          "switchText"
+        ).textContent =
+          "Create a new account";
+
 
       } else {
 
         const savedUser =
-          localStorage.getItem("demoUser");
+          localStorage.getItem(
+            "demoUser"
+          );
+
 
         if (savedUser === username) {
 
-          alert("تم تسجيل الدخول بنجاح");
+          alert(
+            "Login successful."
+          );
+
 
           closeLogin();
 
-          document.getElementById("balance").style.display =
-            "block";
 
-          document.querySelectorAll(".lock").forEach(function(lock) {
-            lock.textContent = "▶";
-          });
+          document.getElementById(
+            "balance"
+          ).style.display = "block";
+
+
+          document
+            .querySelectorAll(".lock")
+            .forEach(function(lock) {
+
+              lock.textContent = "▶";
+
+            });
+
 
         } else {
 
-          alert("اسم المستخدم أو كلمة المرور غير صحيحة");
+          alert(
+            "Username or password is incorrect."
+          );
 
         }
+
       }
+
     }
 
 
     function startGame(gameName) {
 
       const user =
-        localStorage.getItem("demoUser");
+        localStorage.getItem(
+          "demoUser"
+        );
+
 
       if (!user) {
+
         openLogin();
+
         return;
+
       }
 
+
       alert(
-        "اللعبة " +
         gameName +
-        " ستكون متاحة في الخطوة القادمة."
+        " will be available in the next step."
       );
+
     }
 
   </script>
