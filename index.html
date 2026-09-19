@@ -1,27 +1,180 @@
-alert("تم تسجيل الدخول بنجاح");
+<p>اقلب البطاقات واكتشفها</p>
+        </div>
+      </div>
 
-      document.getElementById("balance").textContent="1000.00";
+      <div class="game" onclick="startGame('Basketball')">
+        <div class="lock">🔒</div>
+        <div class="game-art">🏀</div>
+        <div class="game-info">
+          <h3>Basketball</h3>
+          <p>اختبر دقة التصويب</p>
+        </div>
+      </div>
 
-      closeLogin();
+      <div class="game" onclick="startGame('Race')">
+        <div class="lock">🔒</div>
+        <div class="game-art">🏎️</div>
+        <div class="game-info">
+          <h3>Speed Race</h3>
+          <p>سباق السرعة التجريبي</p>
+        </div>
+      </div>
 
-    }else{
-      alert("اسم المستخدم أو كلمة المرور غير صحيحة");
+    </div>
+  </section>
+
+  <footer>
+    ONE BET © 2026 — نسخة تجريبية
+  </footer>
+
+
+  <!-- LOGIN MODAL -->
+  <div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+      <h2 id="formTitle">تسجيل الدخول</h2>
+
+      <input
+        id="username"
+        type="text"
+        placeholder="اسم المستخدم"
+      >
+
+      <input
+        id="password"
+        type="password"
+        placeholder="كلمة المرور"
+      >
+
+      <button
+        class="submit"
+        onclick="submitForm()"
+      >
+        دخول
+      </button>
+
+      <div
+        class="switch"
+        id="switchText"
+        onclick="switchForm()"
+      >
+        إنشاء حساب جديد
+      </div>
+
+      <button
+        class="close"
+        onclick="closeLogin()"
+      >
+        إغلاق
+      </button>
+
+    </div>
+  </div>
+
+
+  <script>
+
+    let registerMode = false;
+
+    function openLogin() {
+      document.getElementById("loginModal").style.display = "flex";
     }
-  }
-}
 
-function startGame(){
+    function closeLogin() {
+      document.getElementById("loginModal").style.display = "none";
+    }
 
-  let user=localStorage.getItem("demoUser");
+    function switchForm() {
 
-  if(!user){
-    openLogin();
-    return;
-  }
+      registerMode = !registerMode;
 
-  alert("اللعبة التجريبية ستفتح في الخطوة القادمة.");
-}
-</script>
+      document.getElementById("formTitle").textContent =
+        registerMode ? "إنشاء حساب" : "تسجيل الدخول";
+
+      document.querySelector(".submit").textContent =
+        registerMode ? "إنشاء الحساب" : "دخول";
+
+      document.getElementById("switchText").textContent =
+        registerMode ? "لدي حساب بالفعل" : "إنشاء حساب جديد";
+    }
+
+
+    function submitForm() {
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      if (!username || !password) {
+        alert("يرجى إدخال اسم المستخدم وكلمة المرور");
+        return;
+      }
+
+      if (registerMode) {
+
+        localStorage.setItem("demoUser", username);
+
+        alert("تم إنشاء الحساب تجريبياً");
+
+        registerMode = false;
+
+        document.getElementById("formTitle").textContent =
+          "تسجيل الدخول";
+
+        document.querySelector(".submit").textContent =
+          "دخول";
+
+        document.getElementById("switchText").textContent =
+          "إنشاء حساب جديد";
+
+      } else {
+
+        const savedUser =
+          localStorage.getItem("demoUser");
+
+        if (savedUser === username) {
+
+          alert("تم تسجيل الدخول بنجاح");
+
+          closeLogin();
+
+          document.getElementById("balance").style.display =
+            "block";
+
+          document.querySelectorAll(".lock").forEach(function(lock) {
+            lock.textContent = "▶";
+          });
+
+        } else {
+
+          alert("اسم المستخدم أو كلمة المرور غير صحيحة");
+
+        }
+      }
+    }
+
+
+    function startGame(gameName) {
+
+      const user =
+        localStorage.getItem("demoUser");
+
+      if (!user) {
+        openLogin();
+        return;
+      }
+
+      alert(
+        "اللعبة " +
+        gameName +
+        " ستكون متاحة في الخطوة القادمة."
+      );
+    }
+
+  </script>
 
 </body>
 </html>
